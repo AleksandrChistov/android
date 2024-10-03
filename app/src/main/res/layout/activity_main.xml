@@ -56,26 +56,44 @@
                 android:layout_margin="5sp"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:src="@android:drawable/ic_menu_delete" />
+
+            <ImageButton
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:layout_margin="5sp"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:src="@android:drawable/ic_menu_save" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:inputType="text"
-            android:layout_gravity="center"
-            android:autofillHints=""
-            android:hint="Your text"
-            android:visibility="invisible">
-        </EditText>
-
-        <ru.androidstudy.PaintArea
-            android:id="@+id/paint"
+        <LinearLayout
+            android:id="@+id/paintWrapper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             >
-        </ru.androidstudy.PaintArea>
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:inputType="text"
+                android:layout_gravity="center"
+                android:autofillHints=""
+                android:background="@android:color/transparent"
+                android:hint="Your text"
+                android:visibility="invisible">
+            </EditText>
+
+            <ru.androidstudy.PaintArea
+                android:id="@+id/paint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+            </ru.androidstudy.PaintArea>
+        </LinearLayout>
 
     </LinearLayout>
 
