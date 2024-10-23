@@ -9,10 +9,12 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 
 
 class SignUpActivity : AppCompatActivity() {
+    private val textName by lazy { findViewById<EditText>(R.id.name) }
     private val textEmail by lazy { findViewById<EditText>(R.id.email) }
     private val textPassword by lazy { findViewById<EditText>(R.id.password) }
     private val textRepeatPassword by lazy { findViewById<EditText>(R.id.repeatPassword) }
@@ -45,6 +47,10 @@ class SignUpActivity : AppCompatActivity() {
                             "Регистрация прошла успешно! Вы можете авторизоваться",
                             Toast.LENGTH_SHORT,
                         ).show()
+                        val profileUpdates = userProfileChangeRequest {
+                            displayName = textName.text.toString()
+                        }
+                        auth.currentUser!!.updateProfile(profileUpdates).addOnCompleteListener {}
                         startActivity(Intent(this, MainActivity::class.java))
                     } else {
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
